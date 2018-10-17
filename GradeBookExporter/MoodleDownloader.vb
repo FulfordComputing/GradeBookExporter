@@ -47,7 +47,16 @@ Public Class MoodleDownloader
         Dim response As WebResponse = request.GetResponse()
         Dim sr As New StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8)
         Dim html As String = sr.ReadToEnd()
-        'MsgBox(html)
+
+        Dim m As Match = Regex.Match(html, "name=""group"">(.*?)<\/select>", RegexOptions.Singleline)
+        If m.Success Then
+            Dim selectHtml As String = m.Groups(1).Value
+            Dim groups As MatchCollection = Regex.Matches(selectHtml, "value=""(\d+)"".*?>(.*?)<")
+            For Each m In groups
+                course.Groups.Add(m.Groups(1).Value, m.Groups(2).Value)
+            Next
+        End If
+        MsgBox(course.Groups.Count)
         sr.Close()
         response.Close()
 

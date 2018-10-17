@@ -5,6 +5,7 @@ Public Class CourseDetails
     Public URL As String
     Public ExcelFile As String
     Public id As Integer
+    Public Groups As New Dictionary(Of Integer, String)
 
     Sub New(name As String, url As String, file As String)
         Me.Name = name
