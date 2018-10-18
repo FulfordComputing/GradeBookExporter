@@ -3,7 +3,7 @@ Imports System.Net
 Imports System.Text
 Imports System.Text.RegularExpressions
 
-Public Class Form1
+Public Class GradebookDownloader
     Dim downloader As New MoodleDownloader
     Dim courses As New Courses
 
@@ -33,7 +33,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub s_Click(sender As Object, e As EventArgs) Handles btnDownload.Click
+    Private Sub btnDownload_Click(sender As Object, e As EventArgs) Handles btnDownload.Click
+        downloader.OutputFolder = txtOutputFolder.Text
         For Each i As Integer In lstCourses.SelectedIndices
             Dim course As CourseDetails = courses.Details(i)
             downloader.DownloadGrades(course)

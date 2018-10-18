@@ -7,7 +7,9 @@ Public Class MoodleDownloader
     Public Connected As Boolean = False
     Public Username As String = ""
     Public Site As String
+    Public OutputFolder As String = ""
     Protected cookies As New CookieContainer
+    Dim formatter As New GradebookFormatter
 
     Public Function Connect(site As String, username As String, password As String) As Boolean
         Me.Username = username
@@ -38,6 +40,7 @@ Public Class MoodleDownloader
                 Return False
             End If
             Me.Username = m.Groups(3).Value
+            Connected = True
             Return True
         End If
         Return False
@@ -45,6 +48,9 @@ Public Class MoodleDownloader
 
 
     Public Sub DownloadGrades(course As CourseDetails)
+        If Connected = False Then
+            Exit Sub
+        End If
         Dim url As String = Site & "/grade/export/xls/index.php?id=" & course.id
         Dim request As HttpWebRequest = HttpWebRequest.Create(url)
         request.CookieContainer = cookies
@@ -105,6 +111,7 @@ Public Class MoodleDownloader
             response = request.GetResponse()
             Dim filename As String = course.Groups(groupID) & ".xlsx"
             filename = filename.Replace("/", "-")
+            filename = OutputFolder & "\" & filename
             Dim fs As New FileStream(filename, FileMode.Create)
 
             Dim s = response.GetResponseStream
@@ -119,6 +126,7 @@ Public Class MoodleDownloader
             fs.Close()
             s.Close()
             response.Close()
+            formatter.ConvertFile(filename)
 
         Next
 

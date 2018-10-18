@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class GradebookDownloader
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -40,10 +40,13 @@ Partial Class Form1
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtOutputFolder = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.statusBar.SuspendLayout()
         Me.groupCourses.SuspendLayout()
         Me.menuFile.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -55,108 +58,122 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.lblPassword)
         Me.GroupBox1.Controls.Add(Me.txtUsername)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 35)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 67)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(267, 221)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(6)
+        Me.GroupBox1.Size = New System.Drawing.Size(534, 333)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "User Details:"
         '
         'txtSite
         '
-        Me.txtSite.Location = New System.Drawing.Point(70, 29)
+        Me.txtSite.Location = New System.Drawing.Point(140, 56)
+        Me.txtSite.Margin = New System.Windows.Forms.Padding(6)
         Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(181, 20)
+        Me.txtSite.Size = New System.Drawing.Size(358, 31)
         Me.txtSite.TabIndex = 5
         Me.txtSite.Text = "https://vle.fulford.york.sch.uk"
         '
         'lblSite
         '
         Me.lblSite.AutoSize = True
-        Me.lblSite.Location = New System.Drawing.Point(6, 32)
+        Me.lblSite.Location = New System.Drawing.Point(12, 62)
+        Me.lblSite.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblSite.Name = "lblSite"
-        Me.lblSite.Size = New System.Drawing.Size(28, 13)
+        Me.lblSite.Size = New System.Drawing.Size(55, 25)
         Me.lblSite.TabIndex = 4
         Me.lblSite.Text = "Site:"
         '
         'btnConnect
         '
-        Me.btnConnect.Location = New System.Drawing.Point(176, 55)
+        Me.btnConnect.Location = New System.Drawing.Point(228, 242)
+        Me.btnConnect.Margin = New System.Windows.Forms.Padding(6)
         Me.btnConnect.Name = "btnConnect"
-        Me.btnConnect.Size = New System.Drawing.Size(75, 23)
-        Me.btnConnect.TabIndex = 2
+        Me.btnConnect.Size = New System.Drawing.Size(150, 44)
+        Me.btnConnect.TabIndex = 4
         Me.btnConnect.Text = "Connect"
         Me.btnConnect.UseVisualStyleBackColor = True
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(70, 82)
+        Me.txtPassword.Location = New System.Drawing.Point(140, 158)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(6)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(100, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(358, 31)
         Me.txtPassword.TabIndex = 3
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(6, 85)
+        Me.lblPassword.Location = New System.Drawing.Point(12, 163)
+        Me.lblPassword.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(56, 13)
+        Me.lblPassword.Size = New System.Drawing.Size(112, 25)
         Me.lblPassword.TabIndex = 2
         Me.lblPassword.Text = "Password:"
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(70, 55)
+        Me.txtUsername.Location = New System.Drawing.Point(140, 106)
+        Me.txtUsername.Margin = New System.Windows.Forms.Padding(6)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(100, 20)
+        Me.txtUsername.Size = New System.Drawing.Size(358, 31)
         Me.txtUsername.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 58)
+        Me.Label1.Location = New System.Drawing.Point(12, 112)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 13)
+        Me.Label1.Size = New System.Drawing.Size(116, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Username:"
         '
         'statusBar
         '
+        Me.statusBar.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.statusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pbStatus, Me.lblStatusLogin})
-        Me.statusBar.Location = New System.Drawing.Point(0, 428)
+        Me.statusBar.Location = New System.Drawing.Point(0, 828)
         Me.statusBar.Name = "statusBar"
-        Me.statusBar.Size = New System.Drawing.Size(800, 22)
+        Me.statusBar.Padding = New System.Windows.Forms.Padding(2, 0, 28, 0)
+        Me.statusBar.Size = New System.Drawing.Size(1600, 37)
         Me.statusBar.TabIndex = 1
         Me.statusBar.Text = "StatusStrip1"
         '
         'pbStatus
         '
         Me.pbStatus.Name = "pbStatus"
-        Me.pbStatus.Size = New System.Drawing.Size(100, 16)
+        Me.pbStatus.Size = New System.Drawing.Size(200, 31)
         '
         'lblStatusLogin
         '
         Me.lblStatusLogin.Name = "lblStatusLogin"
-        Me.lblStatusLogin.Size = New System.Drawing.Size(86, 17)
+        Me.lblStatusLogin.Size = New System.Drawing.Size(174, 32)
         Me.lblStatusLogin.Text = "Not connected"
         '
         'groupCourses
         '
         Me.groupCourses.Controls.Add(Me.btnDownload)
         Me.groupCourses.Controls.Add(Me.lstCourses)
-        Me.groupCourses.Location = New System.Drawing.Point(273, 37)
+        Me.groupCourses.Location = New System.Drawing.Point(546, 71)
+        Me.groupCourses.Margin = New System.Windows.Forms.Padding(6)
         Me.groupCourses.Name = "groupCourses"
-        Me.groupCourses.Size = New System.Drawing.Size(515, 240)
+        Me.groupCourses.Padding = New System.Windows.Forms.Padding(6)
+        Me.groupCourses.Size = New System.Drawing.Size(1030, 329)
         Me.groupCourses.TabIndex = 3
         Me.groupCourses.TabStop = False
         Me.groupCourses.Text = "Courses"
         '
         'btnDownload
         '
-        Me.btnDownload.Location = New System.Drawing.Point(173, 211)
+        Me.btnDownload.Location = New System.Drawing.Point(360, 262)
+        Me.btnDownload.Margin = New System.Windows.Forms.Padding(6)
         Me.btnDownload.Name = "btnDownload"
-        Me.btnDownload.Size = New System.Drawing.Size(153, 23)
+        Me.btnDownload.Size = New System.Drawing.Size(306, 44)
         Me.btnDownload.TabIndex = 4
         Me.btnDownload.Text = "Download Grades"
         Me.btnDownload.UseVisualStyleBackColor = True
@@ -164,18 +181,22 @@ Partial Class Form1
         'lstCourses
         '
         Me.lstCourses.FormattingEnabled = True
-        Me.lstCourses.Location = New System.Drawing.Point(18, 19)
+        Me.lstCourses.ItemHeight = 25
+        Me.lstCourses.Location = New System.Drawing.Point(36, 37)
+        Me.lstCourses.Margin = New System.Windows.Forms.Padding(6)
         Me.lstCourses.Name = "lstCourses"
         Me.lstCourses.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lstCourses.Size = New System.Drawing.Size(491, 186)
+        Me.lstCourses.Size = New System.Drawing.Size(978, 204)
         Me.lstCourses.TabIndex = 3
         '
         'menuFile
         '
+        Me.menuFile.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.menuFile.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.menuFile.Location = New System.Drawing.Point(0, 0)
         Me.menuFile.Name = "menuFile"
-        Me.menuFile.Size = New System.Drawing.Size(800, 24)
+        Me.menuFile.Padding = New System.Windows.Forms.Padding(12, 4, 0, 4)
+        Me.menuFile.Size = New System.Drawing.Size(1600, 44)
         Me.menuFile.TabIndex = 4
         Me.menuFile.Text = "MenuStrip1"
         '
@@ -183,31 +204,51 @@ Partial Class Form1
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(64, 36)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(173, 38)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(173, 38)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
-        'Form1
+        'GroupBox2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.GroupBox2.Controls.Add(Me.txtOutputFolder)
+        Me.GroupBox2.Location = New System.Drawing.Point(17, 409)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1559, 100)
+        Me.GroupBox2.TabIndex = 5
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Output folder:"
+        '
+        'txtOutputFolder
+        '
+        Me.txtOutputFolder.Location = New System.Drawing.Point(25, 45)
+        Me.txtOutputFolder.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtOutputFolder.Name = "txtOutputFolder"
+        Me.txtOutputFolder.Size = New System.Drawing.Size(1507, 31)
+        Me.txtOutputFolder.TabIndex = 4
+        '
+        'GradebookDownloader
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1600, 865)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.groupCourses)
         Me.Controls.Add(Me.statusBar)
         Me.Controls.Add(Me.menuFile)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "Form1"
+        Me.Margin = New System.Windows.Forms.Padding(6)
+        Me.Name = "GradebookDownloader"
         Me.Text = "VLE Gradebook Exporter"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -216,6 +257,8 @@ Partial Class Form1
         Me.groupCourses.ResumeLayout(False)
         Me.menuFile.ResumeLayout(False)
         Me.menuFile.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,4 +282,6 @@ Partial Class Form1
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btnDownload As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txtOutputFolder As TextBox
 End Class
