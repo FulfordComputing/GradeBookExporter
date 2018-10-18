@@ -90,6 +90,9 @@ Public Class MoodleDownloader
         response.Close()
 
         For Each groupID As Integer In course.Groups.Keys
+            If groupID = 0 Then
+                Continue For
+            End If
             url = Site & "/grade/export/xls/export.php?group=" & groupID
 
 
@@ -129,12 +132,6 @@ Public Class MoodleDownloader
             formatter.ConvertFile(filename)
 
         Next
-
-
-
-
-
-
 
     End Sub
 End Class
