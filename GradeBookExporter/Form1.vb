@@ -33,10 +33,19 @@ Public Class Form1
 
     End Sub
 
-    Private Sub s_Click(sender As Object, e As EventArgs) Handles s.Click
+    Private Sub s_Click(sender As Object, e As EventArgs) Handles btnDownload.Click
         For Each i As Integer In lstCourses.SelectedIndices
             Dim course As CourseDetails = courses.Details(i)
             downloader.DownloadGrades(course)
+        Next
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        courses.Load("Courses.txt")
+        lstCourses.Items.Clear()
+        lstCourses.Items.AddRange(courses.Details.ToArray)
+        For i As Integer = 0 To lstCourses.Items.Count - 1
+            lstCourses.SetSelected(i, True)
         Next
     End Sub
 End Class

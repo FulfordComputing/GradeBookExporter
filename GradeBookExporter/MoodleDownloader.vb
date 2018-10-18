@@ -26,6 +26,7 @@ Public Class MoodleDownloader
         Dim response As WebResponse = request.GetResponse()
         dataStream = response.GetResponseStream()
         Dim reader As New StreamReader(dataStream)
+
         Dim responseFromServer As String = reader.ReadToEnd()
         reader.Close()
         dataStream.Close()
@@ -33,6 +34,9 @@ Public Class MoodleDownloader
 
         Dim m As Match = Regex.Match(responseFromServer, """logininfo"">(.*?)(<.*?""View profile"">(.*?)<.*?)?<")
         If m.Success Then
+            If m.Groups(3).Value = "" Then
+                Return False
+            End If
             Me.Username = m.Groups(3).Value
             Return True
         End If
@@ -44,6 +48,8 @@ Public Class MoodleDownloader
         Dim url As String = Site & "/grade/export/xls/index.php?id=" & course.id
         Dim request As HttpWebRequest = HttpWebRequest.Create(url)
         request.CookieContainer = cookies
+        Dim SessionKey As String = ""
+
         Dim response As WebResponse = request.GetResponse()
         Dim sr As New StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8)
         Dim html As String = sr.ReadToEnd()
@@ -52,13 +58,74 @@ Public Class MoodleDownloader
         If m.Success Then
             Dim selectHtml As String = m.Groups(1).Value
             Dim groups As MatchCollection = Regex.Matches(selectHtml, "value=""(\d+)"".*?>(.*?)<")
+            course.Groups.Clear()
+
             For Each m In groups
                 course.Groups.Add(m.Groups(1).Value, m.Groups(2).Value)
             Next
         End If
-        MsgBox(course.Groups.Count)
+
+        m = Regex.Match(html, """sesskey"":""(.*?)""")
+        If m.Success Then
+            SessionKey = m.Groups(1).Value
+        End If
+
+        Dim mActivities As MatchCollection = Regex.Matches(html, "itemids\[(\d+)\]")
+        course.ActivityIDs.Clear()
+        For Each m In mActivities
+            Dim id As Integer = m.Groups(1).Value
+            If Not course.ActivityIDs.Contains(id) Then
+                course.ActivityIDs.Add(m.Groups(1).Value)
+            End If
+        Next
+
+
         sr.Close()
         response.Close()
+
+        For Each groupID As Integer In course.Groups.Keys
+            url = Site & "/grade/export/xls/export.php?group=" & groupID
+
+
+            request = HttpWebRequest.Create(url)
+            request.CookieContainer = cookies
+            request.Method = "POST"
+            Dim postData As String = "id=" & course.id & "submitbutton=Download&display[real]=1&decimals=2&export_onlyactive=1&export_feedback=0&mform_isexpanded_id_gradeitems=1&checkbox_controller1=1&_qf__grade_export_form=1&sesskey=" & SessionKey
+
+            For Each activityID As Integer In course.ActivityIDs
+                postData &= "&itemids[" & activityID & "]=1"
+            Next
+            Dim byteArray As Byte() = Encoding.UTF8.GetBytes(postData)
+            request.ContentType = "application/x-www-form-urlencoded"
+            request.ContentLength = byteArray.Length
+            Dim dataStream As Stream = request.GetRequestStream()
+            dataStream.Write(byteArray, 0, byteArray.Length)
+            dataStream.Close()
+            request.CookieContainer = cookies
+            response = request.GetResponse()
+            Dim filename As String = course.Groups(groupID) & ".xlsx"
+            filename = filename.Replace("/", "-")
+            Dim fs As New FileStream(filename, FileMode.Create)
+
+            Dim s = response.GetResponseStream
+            Dim br As New BinaryReader(s)
+            Dim bytes(1024) As Byte
+
+            Dim count As Integer = 1
+            While count > 0
+                count = s.Read(bytes, 0, bytes.Length)
+                fs.Write(bytes, 0, count)
+            End While
+            fs.Close()
+            s.Close()
+            response.Close()
+
+        Next
+
+
+
+
+
 
 
     End Sub

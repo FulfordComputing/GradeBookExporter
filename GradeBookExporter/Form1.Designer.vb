@@ -23,23 +23,23 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtUsername = New System.Windows.Forms.TextBox()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.lblPassword = New System.Windows.Forms.Label()
-        Me.statusBar = New System.Windows.Forms.StatusStrip()
-        Me.pbStatus = New System.Windows.Forms.ToolStripProgressBar()
-        Me.btnConnect = New System.Windows.Forms.Button()
         Me.txtSite = New System.Windows.Forms.TextBox()
         Me.lblSite = New System.Windows.Forms.Label()
+        Me.btnConnect = New System.Windows.Forms.Button()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.lblPassword = New System.Windows.Forms.Label()
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.statusBar = New System.Windows.Forms.StatusStrip()
+        Me.pbStatus = New System.Windows.Forms.ToolStripProgressBar()
         Me.lblStatusLogin = New System.Windows.Forms.ToolStripStatusLabel()
         Me.groupCourses = New System.Windows.Forms.GroupBox()
+        Me.btnDownload = New System.Windows.Forms.Button()
         Me.lstCourses = New System.Windows.Forms.ListBox()
         Me.menuFile = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.s = New System.Windows.Forms.Button()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.statusBar.SuspendLayout()
         Me.groupCourses.SuspendLayout()
@@ -62,21 +62,31 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "User Details:"
         '
-        'Label1
+        'txtSite
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 58)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Username:"
+        Me.txtSite.Location = New System.Drawing.Point(70, 29)
+        Me.txtSite.Name = "txtSite"
+        Me.txtSite.Size = New System.Drawing.Size(181, 20)
+        Me.txtSite.TabIndex = 5
+        Me.txtSite.Text = "https://vle.fulford.york.sch.uk"
         '
-        'txtUsername
+        'lblSite
         '
-        Me.txtUsername.Location = New System.Drawing.Point(70, 55)
-        Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(100, 20)
-        Me.txtUsername.TabIndex = 1
+        Me.lblSite.AutoSize = True
+        Me.lblSite.Location = New System.Drawing.Point(6, 32)
+        Me.lblSite.Name = "lblSite"
+        Me.lblSite.Size = New System.Drawing.Size(28, 13)
+        Me.lblSite.TabIndex = 4
+        Me.lblSite.Text = "Site:"
+        '
+        'btnConnect
+        '
+        Me.btnConnect.Location = New System.Drawing.Point(176, 55)
+        Me.btnConnect.Name = "btnConnect"
+        Me.btnConnect.Size = New System.Drawing.Size(75, 23)
+        Me.btnConnect.TabIndex = 2
+        Me.btnConnect.Text = "Connect"
+        Me.btnConnect.UseVisualStyleBackColor = True
         '
         'txtPassword
         '
@@ -95,6 +105,22 @@ Partial Class Form1
         Me.lblPassword.TabIndex = 2
         Me.lblPassword.Text = "Password:"
         '
+        'txtUsername
+        '
+        Me.txtUsername.Location = New System.Drawing.Point(70, 55)
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(100, 20)
+        Me.txtUsername.TabIndex = 1
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 58)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(58, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Username:"
+        '
         'statusBar
         '
         Me.statusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pbStatus, Me.lblStatusLogin})
@@ -109,32 +135,6 @@ Partial Class Form1
         Me.pbStatus.Name = "pbStatus"
         Me.pbStatus.Size = New System.Drawing.Size(100, 16)
         '
-        'btnConnect
-        '
-        Me.btnConnect.Location = New System.Drawing.Point(176, 55)
-        Me.btnConnect.Name = "btnConnect"
-        Me.btnConnect.Size = New System.Drawing.Size(75, 23)
-        Me.btnConnect.TabIndex = 2
-        Me.btnConnect.Text = "Connect"
-        Me.btnConnect.UseVisualStyleBackColor = True
-        '
-        'txtSite
-        '
-        Me.txtSite.Location = New System.Drawing.Point(70, 29)
-        Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(181, 20)
-        Me.txtSite.TabIndex = 5
-        Me.txtSite.Text = "https://vle.fulford.york.sch.uk"
-        '
-        'lblSite
-        '
-        Me.lblSite.AutoSize = True
-        Me.lblSite.Location = New System.Drawing.Point(6, 32)
-        Me.lblSite.Name = "lblSite"
-        Me.lblSite.Size = New System.Drawing.Size(28, 13)
-        Me.lblSite.TabIndex = 4
-        Me.lblSite.Text = "Site:"
-        '
         'lblStatusLogin
         '
         Me.lblStatusLogin.Name = "lblStatusLogin"
@@ -143,7 +143,7 @@ Partial Class Form1
         '
         'groupCourses
         '
-        Me.groupCourses.Controls.Add(Me.s)
+        Me.groupCourses.Controls.Add(Me.btnDownload)
         Me.groupCourses.Controls.Add(Me.lstCourses)
         Me.groupCourses.Location = New System.Drawing.Point(273, 37)
         Me.groupCourses.Name = "groupCourses"
@@ -151,6 +151,15 @@ Partial Class Form1
         Me.groupCourses.TabIndex = 3
         Me.groupCourses.TabStop = False
         Me.groupCourses.Text = "Courses"
+        '
+        'btnDownload
+        '
+        Me.btnDownload.Location = New System.Drawing.Point(173, 211)
+        Me.btnDownload.Name = "btnDownload"
+        Me.btnDownload.Size = New System.Drawing.Size(153, 23)
+        Me.btnDownload.TabIndex = 4
+        Me.btnDownload.Text = "Download Grades"
+        Me.btnDownload.UseVisualStyleBackColor = True
         '
         'lstCourses
         '
@@ -177,26 +186,17 @@ Partial Class Form1
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ExitToolStripMenuItem.Text = "E&xit"
-        '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
-        's
+        'ExitToolStripMenuItem
         '
-        Me.s.Location = New System.Drawing.Point(173, 211)
-        Me.s.Name = "s"
-        Me.s.Size = New System.Drawing.Size(153, 23)
-        Me.s.TabIndex = 4
-        Me.s.Text = "Download Grades"
-        Me.s.UseVisualStyleBackColor = True
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'Form1
         '
@@ -238,5 +238,5 @@ Partial Class Form1
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents s As Button
+    Friend WithEvents btnDownload As Button
 End Class
